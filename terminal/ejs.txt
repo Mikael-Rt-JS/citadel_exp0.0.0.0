@@ -1,0 +1,20 @@
+<% for(let el of Object.keys(citadelControl)){ %>
+        <% if(citadelControl[el].active){ %>
+            <% if(el==='home'){ %>
+                <a href="/"><%= el %></a>
+            <% }else{ %>
+                <a href="/<%= el %>"><%= el %></a>
+            <% } %>
+        <% }else{ continue; } %>
+    <% } %>
+
+    <nav class="user_auth">
+    <div class="user_auth_flex">
+        <div class="user_icons">
+            <i><%- include('svg_icons/user.ejs') -%></i>
+        </div>
+        <div class="user_out">
+            <button class="out" title="Log out"><%- include('svg_icons/out.ejs') -%></button>
+        </div>
+    </div>
+</nav>
