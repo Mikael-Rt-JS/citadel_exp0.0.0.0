@@ -73,7 +73,7 @@ module.exports={
         // создаётся файл и его класс
         main.post('/page_create_file',(req,res)=>{
             // console.log(req.body)
-            fs.writeFile(`views/${req.body.filename}.${req.body.extension}`,this.ejsPageShablon,(err)=>{
+            fs.writeFile(`views/${req.body.filename}${req.body.extension}`,this.ejsPageShablon,(err)=>{
                 if(err){
                     console.log(err)
                     res.redirect(`/pages_maker/write_error`)
