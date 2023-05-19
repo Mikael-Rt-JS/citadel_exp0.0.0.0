@@ -1,0 +1,136 @@
+body{
+    /* background: #1c1c1c; */
+    background: #000000;
+
+}
+/* CREATE TABLE FOR DATABASE SQL BLOCK */
+.s_ctsql{
+    width: 100%;
+    padding: 5px;
+    /* background: #000; */
+    color: snow;
+    border-bottom: 1px solid silver;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+.database_info-block{
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(150px,240px) 1fr;
+    grid-template-areas: 'i_t c_n'
+    'i_t t_c'
+    'i_t c_b';
+}
+.info_tables{
+    grid-area: i_t;
+}
+.column_name{
+    display: flex;
+    align-items: center;
+    grid-area: c_n;
+}
+.table_container{
+    height: 560px;
+    overflow-y: auto;
+    grid-area: t_c;
+}
+.table_container::-webkit-scrollbar {
+    width: 12px;
+}
+.table_container::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-right: 1px solid snow;
+    border-left: 1px solid snow;
+
+}
+.table_container::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border: 1px solid snow;
+    border-radius: 6px;
+}
+
+.s_ctsql h2{
+    text-align: center;
+    margin: 20px 0px;
+}
+.s_ctsql table{
+    margin: 10px 0px;
+}
+.s_ctsql tbody tr{
+    width: 100%;
+}
+/* #crateFieldTBody{
+
+} */
+.create_btn{
+    text-transform: uppercase;
+    font-size: 18px;
+    grid-area: c_b;
+}
+#add_column,#remove_column,.create_btn{
+    padding: 8px 20px;
+    font-weight: bold;
+    border-radius: 6px;
+    background: #000;
+    color: snow;
+    cursor: pointer;
+    border: 1px dashed snow;
+    transition: all 0.6s;
+}
+#add_column:hover,#remove_column:hover,.create_btn:hover{
+    border-radius: 25px;
+    border: 1px solid snow;
+    background: #2e2d2d;
+    transition: all 0.6s;
+}
+/* CREATE PAGE BLOCK */
+.s_cpf{
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    align-items: center;
+}
+.create_page_form{
+    background: #000;
+    padding: 30px 5px;
+    border-radius: 6px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-row-gap: 15px;
+}
+.create_page_form h3{
+    color: snow;
+    text-align: center;
+}
+.create_page_form input,.create_page_form select,.create_page_form button,#tablename{
+    padding: 6px 10px;
+    font-size: 18px;
+    color: snow;
+}
+.create_page_form input,.create_page_form select,#tablename{
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid snow;
+}
+.create_page_form button{
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    background: #000;
+    border: 1px dashed snow;
+    border-radius: 6px;
+    transition: all 0.6s;
+}
+.create_page_form button:hover{
+    border-radius: 25px;
+    border: 1px solid snow;
+    transition: all 0.6s;
+}
+.create_page_form button:active{
+    background: orangered;
+    transition: all 0.6s;
+}
