@@ -1,0 +1,30 @@
+npm init
+{
+  "dependencies": {
+    "csv-parser": "^3.0.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.2.0"
+  },
+  "name": "index",
+  "version": "1.0.0",
+  "description": "lol",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
+npm i express
+npm i ejs
+npm i body-parser
+npm i mysql либо
+npm install mysql
+npm install mysql2
+git init
+
+npm i --save ws либо этот
+npm i socket.io
+
+
