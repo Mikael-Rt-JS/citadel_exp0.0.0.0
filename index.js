@@ -2,10 +2,10 @@ const fs=require('fs')
 let {l,main,PORT} =require('./citadel/server')
 let citadelControl=require('./citadel/citadelControl')
 
-let {Index}=require('./citadel/classes/Index.js');
+//let {Index}=require('./citadel/classes/Index.js');
 let {PagesMaker}=require('./citadel/classes/PagesMaker.js');
 
-let home=new Index(main,citadelControl);
+//let home=new Index(main,citadelControl);
 let pages_maker=new PagesMaker(main,citadelControl,fs);
 
 
