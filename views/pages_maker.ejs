@@ -1,0 +1,89 @@
+<%- include('blocks/doctype.ejs') -%>
+<% for(let i=0;i<citadelControl[page].fileCSS.length;i++){ %>
+    <link href="<%= citadelControl[page].fileCSS[i] %>" rel="stylesheet" type="text/css" />
+<% } %>
+<!-- <link href="/css/global.css" rel="stylesheet" type="text/css" /> -->
+<title><%= pagename %></title>
+</head>
+<body>
+    <% for(let i=0;i<citadelControl[page].fileBlocks.length;i++){ %>
+        <%- include(citadelControl[page].fileBlocks[i]) -%>
+    <% } %>
+
+    <section class="s_cpf cmsql">
+        <form class="create_page_form" action="/config_databes" method="post">
+            <h3>Config page</h3>
+            <label for="localhost" class="">Localhost name</label>
+            <input type="" placeholder="Localhost name" name="localhost" class=""/>
+            <label for="user" class="">Page name</label>
+            <input type="" placeholder="User name" name="user" class=""/>
+            <label for="databasename" class="">Database name</label>
+            <input type="password" placeholder="Database name" name="databasename" class=""/>
+            <label for="password" class="">Password</label>
+            <input type="password" placeholder="Password" name="password" class=""/>
+            <button type="submit">config</button>
+        </form>
+    </section>
+
+    <section class="s_cpf">
+        <form class="create_page_form" action="/page_create_file" method="post">
+            <h3>Create page</h3>
+            <label for="filename" class="" id="">Page name</label>
+            <input type="" placeholder="Page name" name="filename" id="" class=""/>
+            <select name="extension">
+                <option value=".ejs">EJS</option>
+            </select>
+            <button type="submit">create</button>
+        </form>
+    </section>
+
+    <section class="s_ctsql">
+        <h2>Create Table</h2>
+        <div class="database_info-block">
+            <aside id="info_tables"></aside>
+            <div class="column_name">
+                <label for="" class="" id="">Table name:</label>
+                <input type="" placeholder="Table name" name="tablename" id="tablename" class=""/>
+                <div>
+                    <button id="add_column">Add column</button>
+                    <button id="remove_column">Remove column</button>
+                </div>
+            </div>
+            <div class="table_container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Имя/Name</th>
+                            <th>Тип/Type</th>
+                            <th>Длина/Значения/Length/Values</th>
+                            <th>A_I</th>
+                            <th>Индекс/Index</th>
+                        </tr>
+                    </thead>
+                    <tbody id="crateFieldTBody">
+                        
+                    </tbody>
+                </table>
+            </div>
+            <button class="create_btn">Create</button>
+        </div>
+    </section>
+
+
+    <!-- <form class="create_table" action="/page_create_table" method="post">
+            <h3>Create page</h3>
+            <label for="filename" class="" id=""></label>
+            <input type="" placeholder="" name="filename" id="" class=""/>
+            <select name="extension">
+                <option value=".ejs">EJS</option>
+            </select>
+            <button type="submit">create</button>
+        </form> -->
+
+        <!-- <label for="" class="" id=""></label> -->
+        <!-- <input type="" placeholder="" name="" id="" class=""/> -->
+    <% for(let i=0;i<citadelControl[page].fileJS.length;i++){ %>
+            <script src="<%= citadelControl[page].fileJS[i] %>"></script>
+    <% } %>
+</body>
+</html>
