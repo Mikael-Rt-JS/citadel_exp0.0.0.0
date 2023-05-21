@@ -10,6 +10,18 @@
         <%- include(citadelControl[page].fileBlocks[i]) -%>
     <% } %>
 
+    <section class="s_cpf">
+        <form class="create_page_form" action="/page_create_file" method="post">
+            <h3>Create page</h3>
+            <label for="filename" class="" id="">Page name</label>
+            <input type="" placeholder="Page name" name="filename" id="" class=""/>
+            <select name="extension">
+                <option value=".ejs">EJS</option>
+            </select>
+            <button type="submit">create</button>
+        </form>
+    </section>
+    
     <section class="s_cpf cmsql">
         <form class="create_page_form" action="/config_databes" method="post">
             <h3>Config page</h3>
@@ -22,18 +34,6 @@
             <label for="password" class="">Password</label>
             <input type="password" placeholder="Password" name="password" class=""/>
             <button type="submit">config</button>
-        </form>
-    </section>
-
-    <section class="s_cpf">
-        <form class="create_page_form" action="/page_create_file" method="post">
-            <h3>Create page</h3>
-            <label for="filename" class="" id="">Page name</label>
-            <input type="" placeholder="Page name" name="filename" id="" class=""/>
-            <select name="extension">
-                <option value=".ejs">EJS</option>
-            </select>
-            <button type="submit">create</button>
         </form>
     </section>
 
@@ -87,3 +87,4 @@
     <% } %>
 </body>
 </html>
+
