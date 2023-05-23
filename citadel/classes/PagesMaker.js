@@ -25,6 +25,7 @@ class PagesMaker extends SQlFunc{
         // переход на страницу создание файла
         main.get('/pages_maker',async (req,res)=>{
             // console.log(await this.getAll('test'))
+
             res.render(`pages_maker`,{
                 page:'pages_maker',
                 citadelControl:citadelControl,
@@ -70,9 +71,12 @@ module.exports={
             return res.redirect('/pages_maker')
         })
 
-        // создаётся файл и его класс
+        // создаётся файл и его класс,
+        //обновляем файл citadel/citadelControl.js
+        //а так же файл MainMind.js
         main.post('/page_create_file',(req,res)=>{
             // console.log(req.body)
+            
             fs.writeFile(`views/${req.body.filename}${req.body.extension}`,this.ejsPageShablon,(err)=>{
                 if(err){
                     console.log(err)
@@ -85,6 +89,41 @@ module.exports={
                     res.redirect(`/pages_maker/write_error`)
                 }
             })
+            fs.readFile('citadel/citadelControl.js','utf-8',async (err, data) => {
+                if (err) {
+                  console.error(err);
+                  return;
+                }
+                let writeToInCitadelControl=`${data.substr(0,data.lastIndexOf("}"))}\t,${req.body.filename}:{
+        fileCSS:['/css/global.css'],
+        fileBlocks:[],
+        fileJS:[],
+        active:true
+    }
+}`;
+                fs.writeFile(`citadel/citadelControl.js`,writeToInCitadelControl,(err)=>{
+                    if(err){
+                        console.log(err)
+                        res.redirect(`/pages_maker/write_error`)
+                    }
+                })
+            })
+
+            fs.readFile('MainMind.js','utf-8',async (err, data) => {
+                if (err) {
+                  console.error(err);
+                  return;
+                }
+                let addPage=data.replace('//add page this',`let {${this.createNameForFileClass(req.body.filename)}}=require('./citadel/classes/${this.createNameForFileClass(req.body.filename)}.js');\n//add page this`)
+                addPage=addPage.replace('//add var page this',`let ${req.body.filename}=new ${this.createNameForFileClass(req.body.filename)}(main,citadelControl,fs);\n\t\t//add var page this`)
+                fs.writeFile(`MainMind.js`,addPage,(err)=>{
+                    if(err){
+                        console.log(err)
+                        res.redirect(`/pages_maker/write_error`)
+                    }
+                })
+            })
+
             return res.redirect('/pages_maker')
         })
         
@@ -127,7 +166,7 @@ module.exports={
     }
     //------------------------------------------------ REQUEST END
 
-    // делает за главную букву начало первого символа  
+    // делает за главную букву начало первого символа в верхний регистр
     createNameForFileClass(filename){
         let classNameFile=filename[0].toUpperCase()+filename.slice(1);
         return classNameFile;
@@ -157,14 +196,14 @@ class ${className} extends SQlFunc{
     constructor(main,citadelControl){
         super();
     
-        /*main.get('/',async (req,res)=>{
-            console.log(await this.getAll('categories'))
-            res.render(\`index\`,{
-                page:'home',
+        main.get('${filename==="index"?"/":"/"+filename}',async (req,res)=>{
+            //console.log(await this.getAll('categories'))
+            res.render(\`${filename}\`,{
+                page:'${filename==="index"?"home":filename}',
                 citadelControl:citadelControl,
-                pagename: 'Home page'
+                pagename: '${filename==="index"?"Home":filename} page'
             })
-        })*/
+        })
         
         /*
         main.post('/page_create_file',(req,res)=>{
@@ -200,3 +239,4 @@ module.exports={
                 return res.redirect(`/user/${username}`)
         
             }*/
+
