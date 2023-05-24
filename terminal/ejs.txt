@@ -18,3 +18,4 @@
         </div>
     </div>
 </nav>
+<img src="/imgs/P_Logo.png" alt="P Logo" title="P Logo"/>
