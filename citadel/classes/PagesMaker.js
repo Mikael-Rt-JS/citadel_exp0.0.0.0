@@ -199,7 +199,7 @@ class ${className} extends SQlFunc{
         main.get('${filename==="index"?"/":"/"+filename}',async (req,res)=>{
             //console.log(await this.getAll('categories'))
             res.render(\`${filename}\`,{
-                page:'${filename==="index"?"home":filename}',
+                page:'${filename}',
                 citadelControl:citadelControl,
                 pagename: '${filename==="index"?"Home":filename} page'
             })
