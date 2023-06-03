@@ -23,3 +23,11 @@
     <%- include("./components/aside.ejs") -%>
     <%- include("./components/main_product.ejs") -%>
 </section>
+
+citadelControl
+fileCSS:['/css/root.css','/css/global.css','/css/nav.css','/css/index/header.css',
+        '/css/index/s_product_block.css','/css/index/aside.css',
+        '/css/index/main_product.css','/css/product_cards.css','/css/footer.css'],
+        fileBlocks:['./blocks/nav.ejs','./blocks/index/header.ejs',
+        './blocks/index/s_product_block.ejs','./blocks/footer.ejs'],
+        fileJS:[],
