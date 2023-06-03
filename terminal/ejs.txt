@@ -19,3 +19,7 @@
     </div>
 </nav>
 <img src="/imgs/P_Logo.png" alt="P Logo" title="P Logo"/>
+<section class="s_product_block">
+    <%- include("./components/aside.ejs") -%>
+    <%- include("./components/main_product.ejs") -%>
+</section>
